@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.1.1_AR75516 (64-bit)
+# SW Build 2960000 on Wed Aug  5 22:57:21 MDT 2020
+# IP Build 2956692 on Thu Aug  6 01:41:30 MDT 2020
+# Start of session at: Sat Jul 24 10:12:05 2021
+# Process ID: 11175
+# Current directory: /home/bruno/devel/Digital-System-Design-FPGA-book/first_project/first_project.runs/synth_1
+# Command line: vivado -log first_system.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source first_system.tcl
+# Log file: /home/bruno/devel/Digital-System-Design-FPGA-book/first_project/first_project.runs/synth_1/first_system.vds
+# Journal file: /home/bruno/devel/Digital-System-Design-FPGA-book/first_project/first_project.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source first_system.tcl -notrace
