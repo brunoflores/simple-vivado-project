@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "/home/bruno/devel/Digital-System-Design-FPGA-book/first_project/first_project.runs/synth_1/first_system.tcl"
+  variable script "/home/bruno/devel/Digital-System-Design-FPGA-book/first_project/first_project.runs/synth_1/first_system2.tcl"
   variable category "vivado_synth"
 }
 
@@ -71,6 +71,8 @@ proc create_report { reportName command } {
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param xicom.use_bs_reader 1
+set_msg_config -id {Synth 8-256} -limit 10000
+set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a12ticsg325-1L
 
@@ -85,7 +87,7 @@ set_property ip_output_repo /home/bruno/devel/Digital-System-Design-FPGA-book/fi
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_verilog -library xil_defaultlib /home/bruno/devel/Digital-System-Design-FPGA-book/first_project/first_project.srcs/sources_1/new/first_system.v
+read_vhdl -library xil_defaultlib /home/bruno/devel/Digital-System-Design-FPGA-book/first_project/first_project.srcs/sources_1/new/first_system2.vhd
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -99,17 +101,17 @@ set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
-synth_design -top first_system -part xc7a12ticsg325-1L
+synth_design -top first_system2 -part xc7a12ticsg325-1L
 OPTRACE "synth_design" END { }
 
 
 OPTRACE "write_checkpoint" START { CHECKPOINT }
 # disable binary constraint mode for synth run checkpoints
 set_param constraints.enableBinaryConstraints false
-write_checkpoint -force -noxdef first_system.dcp
+write_checkpoint -force -noxdef first_system2.dcp
 OPTRACE "write_checkpoint" END { }
 OPTRACE "synth reports" START { REPORT }
-create_report "synth_1_synth_report_utilization_0" "report_utilization -file first_system_utilization_synth.rpt -pb first_system_utilization_synth.pb"
+create_report "synth_1_synth_report_utilization_0" "report_utilization -file first_system2_utilization_synth.rpt -pb first_system2_utilization_synth.pb"
 OPTRACE "synth reports" END { }
 file delete __synthesis_is_running__
 close [open __synthesis_is_complete__ w]

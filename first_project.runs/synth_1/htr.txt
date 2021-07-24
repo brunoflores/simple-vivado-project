@@ -6,4 +6,4 @@
 # Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 #
 
-vivado -log first_system.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source first_system.tcl
+vivado -log first_system2.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source first_system2.tcl
